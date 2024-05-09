@@ -30,12 +30,14 @@ export async function GET() {
         log(`Fetching new data, cache empty or stale...`);
 
         const [weatherRes, forecastRes] = await Promise.all([
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&mode=json&units=metric&lang=EN`),
-            fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${apiKey}&mode=json&units=metric&lang=EN`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&mode=json&units=metric&lang=EN`, {cache: 'no-store'}),
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${apiKey}&mode=json&units=metric&lang=EN`, {cache: 'no-store'})
         ]);
 
         const current = await weatherRes.json();
         const forecast = await forecastRes.json();
+
+        log(`datetime current ${new Date(current.dt * 1000)}`);
 
         cache = { current, forecast };
         cacheTimestamp = now;
