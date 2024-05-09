@@ -1,0 +1,5 @@
+esp32/src/credentials.h
+screenshotter/screenshot.png
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/tasks.json

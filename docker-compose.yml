@@ -1,0 +1,21 @@
+services:
+  esp-web:
+    build: ./web
+    volumes:
+      - data-volume:/screenshot
+    ports:
+      - 3010:3010
+    env_file:
+      - ./web/.env.local
+
+  esp-screenshotter:
+    build: ./screenshotter
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - data-volume:/screenshot
+    env_file:
+      - ./screenshotter/.env.local
+
+volumes:
+  data-volume:

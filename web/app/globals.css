@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.container > * {
+  padding: 5px;
+  overflow: hidden;
+  height: 150px;
+}
+
+.metric-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.metric-summary > h1 {
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+  position:absolute;
+  left: 40%;
+}
+
+.metric-summary > h2 {
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+}
+
+.metric-summary img {
+  width: 50px;
+}
+
+.graph {
+  height: 400px;
+  position: relative;
+}
+
+.graph > canvas {
+  width: 100%;
+  height: 100%;
+}
