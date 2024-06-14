@@ -95,6 +95,7 @@ export default function Home() {
   const tempGraphRef = useRef<HTMLCanvasElement>(null);
   useForecastGraph(tempGraphRef, data,  30, (x: any) => ({
     feels_like: Math.round(x.main.feels_like),
+    temp : Math.round(x.main.temp),
   }));
   const windGraphRef = useRef<HTMLCanvasElement>(null);
   useForecastGraph(windGraphRef, data,  25, (x: any) => ({
@@ -115,7 +116,8 @@ export default function Home() {
   const date = current.dt * 1000;
   const formattedDate = format(date, "EEE do HH:mm");
 
-  const feelsTemp = Math.round(current.main.feels_like);
+  // const feelsTemp = Math.round(current.main.feels_like);
+  const temperature = Math.round(current.main.temp);
   const minTemp = Math.round(current.main.temp_min);
   const maxTemp = Math.round(current.main.temp_max);
   const maxWind = Math.round(ms_to_mph(current.wind.speed));
@@ -129,7 +131,7 @@ export default function Home() {
             alt="Weather icon"
           />
           <div className="temps">
-            {feelsTemp} ({minTemp}-{maxTemp}) &deg;C
+            {temperature} ({minTemp}-{maxTemp}) &deg;C
           </div>
           <div className="windMax">{maxWind} mph</div>
         </div>
